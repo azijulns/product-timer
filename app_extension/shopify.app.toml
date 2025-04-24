@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "239dfefa07b85c550c41240b57230c67"
+name = "Product Timer"
+handle = "product-timer"
+application_url = "https://sheepdog-premium-tadpole.ngrok-free.app/"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = false
+dev_store_url = "devloment.myshopify.com"
+include_config_on_deploy = true
+
+[access.admin]
+direct_api_mode = "online"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products"
+
+[auth]
+redirect_urls = [ "https://sheepdog-premium-tadpole.ngrok-free.app/auth" ]
+
+[webhooks]
+api_version = "2024-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
+  compliance_topics = [ "customers/data_request", "customers/redact", "shop/redact" ]
+
+[pos]
+embedded = false

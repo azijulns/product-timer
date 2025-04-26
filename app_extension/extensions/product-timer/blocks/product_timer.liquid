@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="{{ 'styles.css' | asset_url }}" type="text/css" media="all">
+<div class="sale-container">
+  <div class="sale-banner">
+    <div class="discount-badge">50% OFF</div>
+    <h1 class="sale-title">Summer Flash Sale</h1>
+    <p class="sale-description">Don't miss out on our biggest sale of the season! Limited time offer.</p>
+
+    <div class="countdown-container">
+      <div class="countdown-title">Offer Ends In:</div>
+      <div class="countdown-timer">
+        <div class="time-section">
+          <div class="time-card">
+            <div class="time-card-top" id="days-top">00</div>
+            <div class="time-card-bottom" id="days-bottom">00</div>
+            <div class="time-card-back" id="days-back">00</div>
+            <div class="time-card-back-bottom" id="days-back-bottom">00</div>
+          </div>
+          <div class="time-label">Days</div>
+        </div>
+
+        <div class="time-section">
+          <div class="time-card">
+            <div class="time-card-top" id="hours-top">00</div>
+            <div class="time-card-bottom" id="hours-bottom">00</div>
+            <div class="time-card-back" id="hours-back">00</div>
+            <div class="time-card-back-bottom" id="hours-back-bottom">00</div>
+          </div>
+          <div class="time-label">Hours</div>
+        </div>
+
+        <div class="time-section">
+          <div class="time-card">
+            <div class="time-card-top" id="minutes-top">00</div>
+            <div class="time-card-bottom" id="minutes-bottom">00</div>
+            <div class="time-card-back" id="minutes-back">00</div>
+            <div class="time-card-back-bottom" id="minutes-back-bottom">00</div>
+          </div>
+          <div class="time-label">Minutes</div>
+        </div>
+
+        <div class="time-section">
+          <div class="time-card">
+            <div class="time-card-top" id="seconds-top">00</div>
+            <div class="time-card-bottom" id="seconds-bottom">00</div>
+            <div class="time-card-back" id="seconds-back">00</div>
+            <div class="time-card-back-bottom" id="seconds-back-bottom">00</div>
+          </div>
+          <div class="time-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="{{ 'script.js' |  asset_url}}" defer="defer"></script>
+{% schema %}
+{
+  "name": "Product Timer",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,318 @@
+
+.sale-container {
+    width: 500px;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.sale-banner {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.discount-badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: #ff6b6b;
+    color: white;
+    font-weight: 700;
+    padding: 25px;
+    border-radius: 50%;
+    transform: rotate(15deg);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    animation: pulse 2s infinite;
+    z-index: 5;
+}
+
+.sale-title {
+    color: #2d3748;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.sale-description {
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.countdown-container {
+    margin: 30px 0;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.countdown-title {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.time-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.time-card {
+    width: 80px;
+    height: 80px;
+    perspective: 400px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.time-card-top,
+.time-card-bottom,
+.time-card-back,
+.time-card-back-bottom {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    background: #4a5568;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.time-card-top,
+.time-card-back {
+    top: 0;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.time-card-bottom,
+.time-card-back-bottom {
+    bottom: 0;
+    align-items: flex-start;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.time-card-back,
+.time-card-back-bottom {
+    z-index: -1;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.cta-button {
+    background: #4299e1;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(66, 153, 225, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.cta-button:hover {
+    background: #3182ce;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(66, 153, 225, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(1px);
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+}
+
+.cta-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes flip {
+    0% {
+        transform: rotateX(0);
+        z-index: 2;
+    }
+
+    50% {
+        transform: rotateX(-90deg);
+        z-index: 2;
+    }
+
+    50.01% {
+        transform: rotateX(-90deg);
+        z-index: -1;
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+        z-index: -1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(15deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(15deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotate(15deg) scale(1);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sale-banner {
+        padding: 30px 20px;
+    }
+
+    .sale-title {
+        font-size: 2rem;
+    }
+
+    .countdown-timer {
+        gap: 10px;
+    }
+
+    .time-card {
+        width: 60px;
+        height: 60px;
+    }
+
+    .time-card-top,
+    .time-card-bottom,
+    .time-card-back,
+    .time-card-back-bottom {
+        font-size: 1.5rem;
+    }
+
+    .time-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sale-title {
+        font-size: 1.5rem;
+    }
+
+    .sale-description {
+        font-size: 0.9rem;
+    }
+
+    .time-card {
+        width: 50px;
+        height: 50px;
+    }
+
+    .time-card-top,
+    .time-card-bottom,
+    .time-card-back,
+    .time-card-back-bottom {
+        font-size: 1.2rem;
+    }
+
+    .time-label {
+        font-size: 0.7rem;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}

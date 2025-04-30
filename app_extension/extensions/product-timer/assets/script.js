@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCountdown();
 
     function updateCountdown() {
-        console.log(44);
-
         const now = new Date().getTime();
         const distance = countdownDate - now;
 

@@ -9,6 +9,5 @@ use Illuminate\Support\Facades\Config;
 
 class HandleAppInstalled {
     public function handle(ShopAuthenticatedEvent $event) {
-        Log::info('🛠️ AppInstalledEvent fired for shop ID ' . $event->shopId->toNative());
     }
 }

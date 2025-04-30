@@ -71,7 +71,7 @@ return [
 
     'route_names' => [
         'home' => env('SHOPIFY_ROUTE_NAME_HOME', 'home'),
-        'authenticate' => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE', 'auth'),
+        'authenticate' => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE', 'authenticate'),
         'authenticate.token' => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE_TOKEN', 'authenticate.token'),
         'billing' => env('SHOPIFY_ROUTE_NAME_BILLING', 'billing'),
         'billing.process' => env('SHOPIFY_ROUTE_NAME_BILLING_PROCESS', 'billing.process'),
@@ -195,7 +195,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,read_customer_events,write_script_tags,read_script_tags,'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,read_orders,write_products,read_themes,read_customer_events,write_script_tags,read_script_tags,'),
 
     /*
     |--------------------------------------------------------------------------
@@ -219,7 +219,7 @@ return [
     |
     */
 
-    'api_redirect' => env('SHOPIFY_API_REDIRECT', '/auth'),
+    'api_redirect' => env('SHOPIFY_API_REDIRECT', '/authenticate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -387,22 +387,13 @@ return [
     */
 
     'webhooks' => [
-        /*
-            [
-                'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
-                'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://some-app.com/webhook/orders-create')
-            ], [
-                'topic' => env('SHOPIFY_WEBHOOK_2_TOPIC', 'APP_PURCHASES_ONE_TIME_UPDATE'),
-                'address' => env('SHOPIFY_WEBHOOK_2_ADDRESS', 'https://some-app.com/webhook/purchase'),
-            ]
-            // In certain situations you may wish to map the webhook to a specific class
-            // To do this, change the array to an associative array with a 'class' key
-            'orders-create' => [
-                'topic' => env('SHOPIFY_WEBHOOK_3_TOPIC', 'ORDERS_PAID'),
-                'address' => env('SHOPIFY_WEBHOOK_3_ADDRESS', 'https://some-app.com/webhook/orders-create'),
-                'class' => \App\Shopify\Actions\ExampleAppJob::class
-            ],
-        */],
+
+        [
+            'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'Products_Update'),
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', shopify_webhook_url('webhook/products-update')),
+            'format' => env('SHOPIFY_WEBHOOK_1_FORMAT', 'json'),
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -415,12 +406,12 @@ return [
 
     'scripttags' => [
 
-            [
-                'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://sheepdog-premium-tadpole.ngrok-free.app/scripttags/az.js'),
-                'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
-                'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
-            ],
+        [
+            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://sheepdog-premium-tadpole.ngrok-free.app/scripttags/az.js'),
+            'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
+            'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
         ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -440,11 +431,11 @@ return [
      */
     'after_authenticate_job' => [
 
-            [
-                'job' => env('AFTER_AUTHENTICATE_JOB', \App\Jobs\AfterAuthenticateJob::class), // example: \App\Jobs\AfterAuthenticateJob::class
-                'inline' => env('AFTER_AUTHENTICATE_JOB_INLINE', true) // False = dispatch job for later, true = dispatch immediately
-            ],
+        [
+            'job' => env('AFTER_AUTHENTICATE_JOB', \App\Jobs\AfterAuthenticateJob::class), // example: \App\Jobs\AfterAuthenticateJob::class
+            'inline' => env('AFTER_AUTHENTICATE_JOB_INLINE', true) // False = dispatch job for later, true = dispatch immediately
         ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

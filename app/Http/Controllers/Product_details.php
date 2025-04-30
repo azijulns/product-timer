@@ -14,7 +14,7 @@ class Product_details extends Controller {
 
         $shopify = $shop->api();
         $products = $shopify->rest('GET', '/admin/api/2025-01/products.json');
-        dd($products);
+        // dd($products);
 
         return view('dashboard', ['products' => $products['body']['products']]);
     }
